@@ -5,13 +5,7 @@ RUN apt-get update && apt-get upgrade -yq
 RUN apt-get install python3 python3-pip jq nano -y
 
 # Install chrome and dependencies
-RUN "apt-get update && apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    chromium-browser \
-    --no-install-recommends"
+RUN apt-get install chromium-browser -y    
 
 # Chrome won't run from the root user.
 RUN groupadd chrome && useradd -g chrome -s /bin/bash -G audio,video chrome \
